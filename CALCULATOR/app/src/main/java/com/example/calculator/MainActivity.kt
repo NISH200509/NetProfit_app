@@ -27,7 +27,6 @@ class MainActivity : AppCompatActivity() {
         val expensesBar = findViewById<View>(R.id.expensesBar)
         val helpButton = findViewById<ImageButton>(R.id.helpButton)
 
-        // Button glow effect
         calculateButton.setOnTouchListener { v, event ->
             when (event.action) {
                 android.view.MotionEvent.ACTION_DOWN -> {
@@ -42,7 +41,6 @@ class MainActivity : AppCompatActivity() {
             false
         }
 
-        // Help dialog
         helpButton.setOnClickListener {
             AlertDialog.Builder(this)
                 .setTitle("How to Use")
@@ -56,7 +54,6 @@ class MainActivity : AppCompatActivity() {
             val expenses = expensesInput.text.toString().toDoubleOrNull() ?: 0.0
             val netProfit = revenue - expenses
 
-            // Format result with color
             val profitText = "Net Profit: $${"%.2f".format(netProfit)}"
             netProfitResult.text = profitText
 
@@ -68,7 +65,6 @@ class MainActivity : AppCompatActivity() {
                 bonusMessage.text = "Let's optimize! 💡 Try reducing expenses."
             }
 
-            // Update mini visualization
             val total = revenue + expenses
             if (total > 0) {
                 val revenuePercent = (revenue / total * 100).toInt()
@@ -83,7 +79,6 @@ class MainActivity : AppCompatActivity() {
                 expensesBar.layoutParams = layoutParamsExp
             }
 
-            // Show result with animation
             resultContainer.visibility = View.VISIBLE
             val fadeIn = AlphaAnimation(0f, 1f)
             fadeIn.duration = 500
